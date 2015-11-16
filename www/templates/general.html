@@ -1,0 +1,32 @@
+<ion-view view-title="{{conversion.name}}" ng-init="init()">
+  <ion-content padding="true" scroll="false" class="has-header has-footer">
+        <form class="list">
+            <ion-list>
+                <label class="item item-input">
+                    <span class="input-label"></span>
+                    <input type="tel" data-ng-model="conversion.in" data-ng-change="reCal('in')">
+                </label>
+
+                <label class="item item-select">
+                    <span class="input-label"></span>
+                    <select data-ng-model="conversion.from" data-ng-change="reCal('in')" data-ng-options="option.name for option in conversion.units track by option.id">
+                    </select>
+                </label>
+            </ion-list>
+            <div class="spacer" style="width: 300px; height: 12px;">
+            </div>
+            <ion-list>
+                <label class="item item-input">
+                    <span class="input-label"></span>
+                    <input type="tel" data-ng-model="conversion.out" data-ng-change="reCal('out')">
+                </label>
+
+                <label class="item item-select">
+                    <span class="input-label"></span>
+                    <select data-ng-model="conversion.to" data-ng-change="reCal('in')" data-ng-options="option.name for option in conversion.units track by option.id">
+                    </select>
+                </label>
+            </ion-list>
+        </form>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,39 @@
+<ion-view view-title="{{conversion.name}}" ng-init="init()">
+  <ion-content padding="true" scroll="false" class="has-header has-footer">
+        <form class="list">
+            <ion-list>
+                <label class="item item-input">
+                    <span class="input-label">Range Start</span>
+                    <input type="tel" data-ng-model="conversion.in.one" data-ng-change="reCal('in')">
+                </label>
+
+                <label class="item item-input">
+                    <span class="input-label">Range End</span>
+                    <input type="tel" data-ng-model="conversion.in.two" data-ng-change="reCal('in')">
+                </label>
+            </ion-list>
+            <div class="spacer" style="width: 300px; height: 12px;">
+            </div>
+            <ion-list>
+                <div class="card">
+                  <div class="item item-text-wrap">
+                    <div class="row">
+                      <div class="col">0%</div>
+                      <div class="col">25%</div>
+                      <div class="col">50%</div>
+                      <div class="col">75%</div>
+                      <div class="col">100%</div>
+                    </div>
+                    <div class="row">
+                      <div class="col">{{ conversion.out.one }}</div>
+                      <div class="col">{{ conversion.out.two }}</div>
+                      <div class="col">{{ conversion.out.three }}</div>
+                      <div class="col">{{ conversion.out.four }}</div>
+                      <div class="col">{{ conversion.out.five }}</div>
+                    </div>
+                  </div>
+                </div>
+            </ion-list>
+        </form>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,13 @@
+<ion-view view-title="InstaConvert" data-ng-init="checkForUpdates()">
+  <ion-content>
+    <ion-list>
+      <label class="item item-input">
+        <i class="icon ion-search placeholder-icon"></i>
+        <input type="text" placeholder="Search" data-ng-model="query">
+      </label>
+      <ion-item data-ng-repeat="conversion in conversions | filter:query | orderBy:'name'" ng-href="#/tab/convert/{{conversion.type}}/{{conversion.id}}/false">
+        <h2>{{conversion.name}}</h2>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

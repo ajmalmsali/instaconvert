@@ -1,0 +1,74 @@
+<ion-view view-title="Settings">
+  <ion-content>
+    <ion-list>
+		<div class="item item-divider">History</div>
+	    <ion-toggle class="item item-icon-left" data-ng-model="$storage.settings_enableHistory">
+	        <i class="icon ion-ios-clock" data-ng-show="$storage.settings_enableHistory"></i>
+	        <i class="icon ion-ios-clock-outline" data-ng-hide="$storage.settings_enableHistory"></i>
+		    Save History
+	    </ion-toggle>
+	    <ion-item class="item item-icon-left" data-ng-click="showConfirmDeleteHistory()">
+			<i class="icon ion-ios-time-outline"></i>
+		    Clear History
+			<span class="badge badge-assertive" data-ng-if="$storage.history.length !== 0">{{ $storage.history.length }}</span>
+		</ion-item>
+
+<!-- 		<div class="item item-divider">Updates</div>
+	    <ion-toggle class="item item-icon-left" data-ng-model="$storage.update_autoUpdate">
+	        <i class="icon ion-ios-cloud-download" data-ng-show="$storage.update_autoUpdate"></i>
+	        <i class="icon ion-ios-cloud-download-outline" data-ng-hide="$storage.update_autoUpdate"></i>
+		    Auto Updates
+	    </ion-toggle> -->
+<!-- 	   	<ion-item class="item item-icon-left" data-ng-click="showConfirmReceiveEarlyUpdates()">
+			<i class="icon ion-ios-time-outline"></i>
+		    Check for Updates
+			<span class="badge badge-assertive"></span>
+		</ion-item>
+	    <ion-toggle class="item item-icon-left" data-ng-model="$storage.update_edgeUpdates" data-ng-click="showConfirmReceiveEarlyUpdates()">
+	        <i class="icon ion-ios-thunderstorm" data-ng-show="$storage.update_edgeUpdates"></i>
+	        <i class="icon ion-ios-thunderstorm-outline" data-ng-hide="$storage.update_edgeUpdates"></i>
+		    Receive Early Updates
+	    </ion-toggle> -->
+<!-- 	    <ion-item class="item item-icon-left" data-ng-click="showConfirmReceiveEarlyUpdates()">
+			<i class="icon ion-ios-time-outline"></i>
+		    Update Now
+			<span class="badge badge-assertive"></span>
+		</ion-item> -->
+	    
+	    <div class="item item-divider">Feedback</div>
+	    <ion-item class="item item-icon-left" data-ng-click="openInBrowser('mailto:forumautomation@gmail.com?subject=Feedback-InstaConvert', '_system')">
+	    	<i class="icon ion-ios-email-outline"></i>Send Feedback by Email
+	    </ion-item>
+	    
+	    <div class="item item-divider">Contact Developer</div>
+	  	<ion-item class="item item-icon-left" data-ng-click="openInBrowser('https://fb.com/abhpian', '_system')">
+	  		<i class="icon ion-social-facebook-outline"></i>Ajmal M Sali
+	  	</ion-item>
+	    <ion-item class="item item-icon-left" data-ng-click="openInBrowser('https://ajm.al', '_system')">
+	    	<i class="icon ion-social-linkedin-outline"></i>https://ajm.al
+	    </ion-item>
+	    <ion-item class="item item-icon-left" data-ng-click="openInBrowser('mailto:mail@ajm.al?subject=Hello-InstaConvert', '_system')">
+	    	<i class="icon ion-ios-at-outline"></i>mail [at] ajm.al
+	    </ion-item>
+	    <ion-item class="item item-icon-left" data-ng-click="openInBrowser('tel:919446270758', '_system')">
+	    	<i class="icon ion-ios-telephone-outline"></i>+91 944.627.0758
+	    </ion-item>
+	    <ion-item class="item item-icon-left" data-ng-click="openInBrowser('https://github.com/ajmalmsali/', '_system')">
+	    	<i class="icon ion-social-github-outline"></i>Github
+	    </ion-item>
+		<div class="item item-divider">Built With</div>
+	    <ion-item class="item item-icon-left" data-ng-click="openInBrowser('https://angularjs.org', '_system')">
+	    	<i class="icon ion-social-angular-outline"></i>AngularJS
+	    </ion-item>
+	    <ion-item class="item item-icon-left" data-ng-click="openInBrowser('http://ionicframework.com/', '_system')">
+	    	<i class="icon ion-ionic"></i>Ionic Framework
+	    </ion-item>
+	    <ion-item class="item item-icon-left" data-ng-click="openInBrowser('https://nodejs.org', '_system')">
+	    	<i class="icon ion-social-nodejs"></i>NodeJS
+	    </ion-item>
+	    <ion-item class="item item-icon-left" data-ng-click="openInBrowser('http://sass-lang.com/', '_system')">
+	    	<i class="icon ion-social-sass"></i>SASS
+	    </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,31 @@
+<ion-view view-title="{{conversion.name}}" ng-init="init()">
+  <ion-content padding="true" scroll="false" class="has-footer">
+        <form class="list">
+            <ion-list>
+                <label class="item range">
+                    <span class="input-label" data-ng-bind-template="{{ conversion.in }} {{ conversion.from.name }}"></span>
+                    <input type="range" data-ng-model="conversion.in" data-ng-change="reCal('in')" min="{{ prepare_form('min', conversion.from.id) }}" max="{{ prepare_form('max', conversion.from.id) }}">
+                </label>
+                <label class="item item-select">
+                    <span class="input-label"></span>
+                    <select data-ng-model="conversion.from" data-ng-change="reCal('in')" data-ng-options="option.name for option in conversion.units track by option.id">
+                    </select>
+                </label>
+            </ion-list>
+            <div class="spacer" style="width: 300px; height: 12px;">
+            </div>
+            <ion-list>
+                <label class="item range">
+                    <span class="input-label"  data-ng-bind-template="{{ conversion.out }} {{ conversion.to.name }}"></span>
+                    <input type="range" data-ng-model="conversion.out" data-ng-change="reCal('out')" min="{{ prepare_form('min', conversion.to.id) }}" max="{{ prepare_form('max', conversion.to.id) }}">
+                </label>
+
+                <label class="item item-select">
+                    <span class="input-label"></span>
+                    <select data-ng-model="conversion.to" data-ng-change="reCal('in')" data-ng-options="option.name for option in conversion.units track by option.id">
+                    </select>
+                </label>
+            </ion-list>
+        </form>
+    </ion-content>
+</ion-view>

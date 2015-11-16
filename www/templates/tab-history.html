@@ -1,0 +1,54 @@
+<ion-view view-title="History">
+  <ion-content class="padding" data-ng-show="historyAvailable()">
+    <ion-list>
+      <ion-item data-ng-repeat="conversion in $storage.history | orderBy:'-' track by $index" ng-click="convert_from_history(conversion)" ng-href="#/tab/history-convert/{{conversion.type}}/{{conversion.id}}/true">
+        <div data-ng-if="conversion.type != 'calibration'">
+          <h2>{{conversion.name}}</h2>
+          <p><b>Input:</b> {{ conversion.in }} {{ conversion.from.name }}</p>
+          <p><b>Output:</b> {{ conversion.out }} {{ conversion.to.name }}</p>
+        </div>
+        <div data-ng-if="conversion.type == 'calibration'">
+          <h2>{{conversion.name}}</h2>
+          <p><b>Input:</b> {{ conversion.in.one }} - {{ conversion.in.two }}</p>
+            <div class="row">
+              <div class="col">0%</div>
+              <div class="col">25%</div>
+              <div class="col">50%</div>
+              <div class="col">75%</div>
+              <div class="col">100%</div>
+            </div>
+            <div class="row">
+              <div class="col">{{ conversion.out.one }}</div>
+              <div class="col">{{ conversion.out.two }}</div>
+              <div class="col">{{ conversion.out.three }}</div>
+              <div class="col">{{ conversion.out.four }}</div>
+              <div class="col">{{ conversion.out.five }}</div>
+            </div>
+        </div>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+  <ion-content class="padding" data-ng-hide="historyAvailable()">
+
+    <div class="card" data-ng-show="historyEnabled()">
+      <div class="item item-text-wrap">
+        <center>
+          <i class="ion-ios-clock font-big"></i>
+          </br>History Not Available.</br></br>
+          <a class="button icon-right ion-chevron-right button-block button-positive" href="#/tab/dash">Start Converting.</a>
+        </center>
+      </div>
+    </div>
+
+    <div class="card" data-ng-hide="historyEnabled()">
+      <div class="item item-text-wrap">
+        <center>
+          <i class="ion-ios-clock-outline font-big"></i>
+          </br>History Disabled.</br></br>
+          <a class="button icon-right ion-chevron-right button-block button-balanced" data-ng-href="#/tab/settings"> Goto Settings to enable.</a>
+        </center>
+      </div>
+    </div>
+
+  </ion-content>
+</ion-view>
