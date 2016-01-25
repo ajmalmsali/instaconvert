@@ -134,7 +134,25 @@ angular.module('instaConvert.controllers', ['ngStorage'])
     // }
 
     $scope.recal = 1;
-    if($scope.conversion.type != "calibration"){
+    if($scope.conversion.type == "calibration"){
+      $first = parseInt($scope.conversion.in.one);
+      $two = parseInt($scope.conversion.in.two);
+
+      $scope.conversion.out.one = $first;
+      $scope.conversion.out.five = $two;
+
+      var devt = (-1) * $first; //Compute.sign($first);
+      var x = 0;
+      var y = $two + devt;
+
+      console.log("x0:"+$first+",y0:"+$two);
+      console.log("x:"+x+",y:"+y);
+      $scope.conversion.out.two = (.25 * (y-x)) + $first;
+      $scope.conversion.out.three = (.50 * (y-x)) + $first;
+      $scope.conversion.out.four = (.75 * (y-x)) + $first;
+      
+    }
+    else{
       current_conversion_calc = ConversionCalcs.get($scope.conversion.id);
 
       if(in_out != 'out'){
@@ -143,13 +161,6 @@ angular.module('instaConvert.controllers', ['ngStorage'])
       else{
         $scope.conversion.in = Compute.calc($scope.conversion, current_conversion_calc, 'out');
       }
-    }
-    else{
-      $scope.conversion.out.one = parseInt($scope.conversion.in.one);
-      $scope.conversion.out.two = (.25 * ($scope.conversion.in.two - $scope.conversion.in.one));
-      $scope.conversion.out.three = (.50 * ($scope.conversion.in.two - $scope.conversion.in.one));
-      $scope.conversion.out.four = (.75 * ($scope.conversion.in.two - $scope.conversion.in.one));
-      $scope.conversion.out.five = parseInt($scope.conversion.in.two);
     }
 
     $ionicAnalytics.track('Calc', $scope.conversion);

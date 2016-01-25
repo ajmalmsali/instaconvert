@@ -1360,6 +1360,7 @@ angular.module('instaConvert.services', ['ngLodash'])
           return (value/.25);
         },
         "scaleFrom": function(value) {
+          console.log("ScaleFrom Called:"+value);
           return (.25*value);
         },
         "symbol": "",
@@ -2393,6 +2394,10 @@ angular.module('instaConvert.services', ['ngLodash'])
     return result;
   }
 
+  var sign = function(x) {
+    return typeof x === 'number' ? x ? x < 0 ? -1 : 1 : x === x ? 0 : NaN : NaN;
+  }
+
   var compute = function(current_conversion, conversion_calc, in_out) {
 
     var conversionType = current_conversion.id;
@@ -2403,48 +2408,38 @@ angular.module('instaConvert.services', ['ngLodash'])
     else{
       value = current_conversion.out;
     }
-
+    console.log(in_out);
+    console.log(value);
+    console.log(current_conversion);
     var oneUnitFrom = conversion_calc[current_conversion.from.id];
     var oneUnitTo = conversion_calc[current_conversion.to.id];
 
-    //console.log(oneUnitFrom);
-    //console.log(oneUnitTo);
-
-    //console.log("value:"+value);
-    //console.log(oneUnitFrom.scale);
-    //console.log(oneUnitTo.scale);
-
+    console.log("oneUnitFrom.scale:"+oneUnitFrom.scale);
     //Convert "From" units to base unit of category ie. celcius to Kelvin
     if (isNumber(oneUnitFrom.scale)) {
       value = value * oneUnitFrom.scale;
     } else {
       value = oneUnitFrom.scale(value);
     }
-
-    //console.log(value);
-
-
+    console.log("oneUnitFrom.scale-val1:"+value);
     //Next Convert into "To" units from the base unit of category ie. kelvin to fahrenheit
     if (isNumber(oneUnitTo.scale)) {
       value = value / oneUnitTo.scale;
     } else {
       value = oneUnitTo.scaleFrom(value);
     }
-
-    //console.log(value);
-
+    console.log("oneUnitFrom.scale-val2:"+value);
     if(oneUnitTo.decimal !== undefined){
       value = roundIt(value, oneUnitTo.decimal);
     }
     return value;
-
-    //console.log(value);
   }
 
   return {
     calc: function(current_conversion, conversion_calc, in_out) {
       return compute(current_conversion, conversion_calc, in_out);
-    }
+    },
+    sign: sign
   };
 
 });
